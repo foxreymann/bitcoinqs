@@ -42,7 +42,9 @@ nav {
   display: flex; align-items: center; justify-content: space-between;
   height: 64px;
 }
-.logo { font-weight: 800; font-size: 1.2rem; color: var(--accent2); text-decoration: none; }
+.logo { font-weight: 800; font-size: 1.2rem; color: var(--accent2); text-decoration: none; display: flex; align-items: center; gap: 8px; }
+.logo-icon { width: 28px; height: 28px; border-radius: 6px; }
+.hero-logo { width: 180px; height: 180px; border-radius: 24px; margin: 0 auto 24px; display: block; box-shadow: 0 8px 32px rgba(108,92,231,.3); }
 .nav-links { display: flex; gap: 24px; align-items: center; }
 .nav-links a { color: var(--text2); text-decoration: none; font-size: .875rem; transition: color .2s; }
 .nav-links a:hover { color: var(--text); }
