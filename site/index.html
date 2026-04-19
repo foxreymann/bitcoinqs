@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BitcoinQS — Quantum-Secure Cryptocurrency</title>
+  <meta name="description" content="BitcoinQS is a post-quantum cryptocurrency using WOTS+ hash-based signatures, immune to Shor's algorithm and all known quantum attacks." />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>⚛</text></svg>" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <a href="#" class="logo">⚛ BitcoinQS</a>
+      <div class="nav-links">
+        <a href="#threat">Quantum Threat</a>
+        <a href="#how">How It Works</a>
+        <a href="#compare">Comparison</a>
+        <a href="#demo">Demo</a>
+        <a href="#roadmap">Roadmap</a>
+        <a href="https://github.com/foxreymann/bitcoinqs" class="btn btn-sm" target="_blank">GitHub</a>
+      </div>
+      <button class="mobile-toggle" aria-label="Menu">☰</button>
+    </div>
+  </nav>
+
+  <section class="hero">
+    <div class="container">
+      <div class="hero-badge">POST-QUANTUM SECURE</div>
+      <h1>Bitcoin, but<br /><span class="gradient-text">quantum-proof.</span></h1>
+      <p class="hero-sub">
+        BitcoinQS replaces ECDSA with <strong>WOTS+</strong> hash-based signatures — 
+        immune to Shor's algorithm and all known quantum attacks. Same blockchain model. 
+        Unbreakable cryptography.
+      </p>
+      <div class="hero-actions">
+        <a href="#demo" class="btn btn-lg">Live Demo</a>
+        <a href="https://github.com/foxreymann/bitcoinqs" class="btn btn-lg btn-outline" target="_blank">View Code</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <span class="stat-val">256-bit</span>
+          <span class="stat-label">Post-quantum security</span>
+        </div>
+        <div class="stat">
+          <span class="stat-val">WOTS+</span>
+          <span class="stat-label">Signature scheme</span>
+        </div>
+        <div class="stat">
+          <span class="stat-val">0</span>
+          <span class="stat-label">Quantum vulnerabilities</span>
+        </div>
+      </div>
+    </div>
+    <div class="hero-glow"></div>
+  </section>
+
+  <section id="threat" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">THE PROBLEM</span>
+        <h2>Bitcoin is not quantum-safe.</h2>
+        <p>ECDSA (secp256k1) — the signature scheme securing every Bitcoin transaction — is broken by Shor's algorithm on a quantum computer. This isn't hypothetical. It's an inevitability.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card card-danger">
+          <div class="card-icon">🔓</div>
+          <h3>Private Key Extraction</h3>
+          <p>Shor's algorithm can derive a private key from a public key in polynomial time on a quantum computer. Every address with a revealed public key is vulnerable.</p>
+        </div>
+        <div class="card card-danger">
+          <div class="card-icon">💰</div>
+          <h3>~4M BTC at Risk</h3>
+          <p>Approximately 4 million Bitcoin sit on addresses with exposed public keys. A quantum adversary could steal all of them in minutes.</p>
+        </div>
+        <div class="card card-danger">
+          <div class="card-icon">⏳</div>
+          <h3>No Migration Plan</h3>
+          <p>Bitcoin has no roadmap for post-quantum migration. A hard fork would be required, and backward compatibility is essentially impossible.</p>
+        </div>
+      </div>
+      <div class="timeline">
+        <h3>Quantum Computing Timeline</h3>
+        <div class="timeline-track">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span class="timeline-year">2024</span>
+            <span class="timeline-label">NIST post-quantum standards finalized</span>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <span class="timeline-year">2025</span>
+            <span class="timeline-label">IBM 1,000+ qubit processors</span>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot active"></div>
+            <span class="timeline-year">~2029</span>
+            <span class="timeline-label">Error-corrected quantum advantage</span>
+          </div>
+          <div class="timeline-item">
+            <div class="timeline-dot danger"></div>
+            <span class="timeline-year">~2033</span>
+            <span class="timeline-label">Bitcoin's ECDSA could be breakable</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="how" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">THE SOLUTION</span>
+        <h2>How BitcoinQS works</h2>
+        <p>Three fundamental changes make BitcoinQS quantum-secure.</p>
+      </div>
+      <div class="grid grid-3">
+        <div class="card">
+          <div class="card-number">01</div>
+          <h3>WOTS+ Signatures</h3>
+          <p>Replace ECDSA with WOTS+ — a hash-based one-time signature scheme. Security relies solely on SHA-256 preimage resistance, which remains strong against quantum attacks (Grover's only halves bit security).</p>
+          <ul class="feature-list">
+            <li>67 hash chains per keypair</li>
+            <li>No algebraic structure to exploit</li>
+            <li>NIST-aligned (XMSS building block)</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-number">02</div>
+          <h3>One-Time Key Rotation</h3>
+          <p>Each WOTS+ key signs exactly one transaction, then rotates. This isn't a limitation — it's forward secrecy by design.</p>
+          <ul class="feature-list">
+            <li>Compromised key → only 1 tx affected</li>
+            <li>Change goes to fresh keys by default</li>
+            <li>Automatic wallet key management</li>
+          </ul>
+        </div>
+        <div class="card">
+          <div class="card-number">03</div>
+          <h3>Hybrid Addressing</h3>
+          <p>Addresses derived from both SHA-256 and SHA3-256 of the public key root, then combined. Double-layered hash security.</p>
+          <ul class="feature-list">
+            <li>SHA-256 + SHA3-256 dual hashing</li>
+            <li>bqs1... prefix for network identity</li>
+            <li>Resistant even if one hash weakens</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="arch-diagram">
+        <h3>Architecture</h3>
+        <div class="arch-layers">
+          <div class="arch-layer">
+            <span class="arch-label">Wallet</span>
+            <div class="arch-content">WOTS+ Key Chain → Auto-Rotation → Multi-Address Balance</div>
+          </div>
+          <div class="arch-layer">
+            <span class="arch-label">Tx</span>
+            <div class="arch-content">UTXO Model · Per-Input WOTS+ Signatures · Change to Fresh Keys</div>
+          </div>
+          <div class="arch-layer">
+            <span class="arch-label">Block</span>
+            <div class="arch-content">Merkle Root · PoW (SHA-256) · Difficulty Adjustment</div>
+          </div>
+          <div class="arch-layer">
+            <span class="arch-label">Chain</span>
+            <div class="arch-content">Validation · UTXO Set · Mempool · Chain Integrity</div>
+          </div>
+          <div class="arch-layer">
+            <span class="arch-label">API</span>
+            <div class="arch-content">REST · Wallet Management · Mining RPC · P2P Gossip</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="compare" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">COMPARISON</span>
+        <h2>Bitcoin vs BitcoinQS</h2>
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Feature</th>
+              <th class="btc-col">Bitcoin</th>
+              <th class="bqs-col">BitcoinQS</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td>Signature scheme</td><td>ECDSA (secp256k1)</td><td class="highlight">WOTS+ (hash-based)</td></tr>
+            <tr><td>Quantum security</td><td class="danger-text">None</td><td class="safe-text">256-bit post-quantum</td></tr>
+            <tr><td>Key reuse</td><td>Common</td><td class="highlight">Forbidden by design</td></tr>
+            <tr><td>Forward secrecy</td><td>No</td><td class="highlight">Yes (one-time keys)</td></tr>
+            <tr><td>Security assumption</td><td>Discrete log</td><td class="highlight">Hash preimage resistance</td></tr>
+            <tr><td>Address format</td><td>bc1q... / 1...</td><td class="highlight">bqs1...</td></tr>
+            <tr><td>UTXO model</td><td>Yes</td><td>Yes</td></tr>
+            <tr><td>Quantum migration</td><td class="danger-text">Unplanned</td><td class="safe-text">Native</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <section id="demo" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">LIVE DEMO</span>
+        <h2>See it in action</h2>
+        <p>Run the 10-step hackathon demo to see quantum-secure key generation, signing, mining, transfers, and attack simulation.</p>
+      </div>
+      <div class="demo-terminal">
+        <div class="terminal-header">
+          <div class="terminal-dots">
+            <span class="dot red"></span>
+            <span class="dot yellow"></span>
+            <span class="dot green"></span>
+          </div>
+          <span class="terminal-title">Terminal</span>
+        </div>
+        <div class="terminal-body">
+          <div class="terminal-line"><span class="prompt">$</span> git clone https://github.com/foxreymann/bitcoinqs.git</div>
+          <div class="terminal-line"><span class="prompt">$</span> cd bitcoinqs && npm install</div>
+          <div class="terminal-line"><span class="prompt">$</span> npm run demo</div>
+          <div class="terminal-output">
+            <pre>
+ ⚛  BITCOINQS — QUANTUM-SECURE CRYPTOCURRENCY
+
+ <span class="t-cyan">STEP 1</span>  Quantum-Secure Key Generation (WOTS+)
+   Private key: 67 × 32-byte random seeds
+   Public key:  67 × 32-byte hash chains (W=16)
+   Address:     <span class="t-green">bqs1Xk3Rm7pQ...</span>
+   Security:    256-bit post-quantum (hash-based)
+   ✓ WOTS+ keypair generated — immune to Shor's algorithm
+
+ <span class="t-cyan">STEP 2</span>  Quantum-Secure Signing & Verification
+   ✓ Signature verified: <span class="t-green">true</span>
+   ⚠ Tampered message verification: <span class="t-red">false</span> (rejected)
+
+ <span class="t-cyan">STEP 5</span>  Quantum-Secure Transfer: Alice → Bob
+   Quantum verified: <span class="t-green">true</span> (WOTS+ signature valid)
+   ✓ Transaction signed with post-quantum WOTS+ signature
+
+ <span class="t-cyan">STEP 8</span>  Quantum Attack Simulation
+   ✓ FORGED SIGNATURE REJECTED — WOTS+ is quantum-secure!
+   ECDSA equivalent: <span class="t-red">VULNERABLE</span>
+   WOTS+ advantage:  <span class="t-green">SECURE</span>
+
+ ⚛ BITCOIN QS — QUANTUM-SECURE BY DESIGN ⚛</pre>
+          </div>
+        </div>
+      </div>
+      <div class="demo-features">
+        <div class="demo-feat"><strong>10 steps</strong> — full workflow demo</div>
+        <div class="demo-feat"><strong>Live mining</strong> — proof-of-work in real-time</div>
+        <div class="demo-feat"><strong>Attack sim</strong> — quantum forgery attempt</div>
+        <div class="demo-feat"><strong>REST API</strong> — <code>npm run demo:api</code></div>
+      </div>
+    </div>
+  </section>
+
+  <section id="roadmap" class="section section-dark">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">ROADMAP</span>
+        <h2>What's next</h2>
+      </div>
+      <div class="roadmap-grid">
+        <div class="roadmap-item done">
+          <span class="roadmap-phase">MVP</span>
+          <h3>Hackathon Release</h3>
+          <p>WOTS+ signatures · Blockchain with UTXO · Wallet with key rotation · REST API · Interactive demo</p>
+        </div>
+        <div class="roadmap-item">
+          <span class="roadmap-phase">Phase 1</span>
+          <h3>XMSS Key Trees</h3>
+          <p>Wrap WOTS+ in Merkle trees (XMSS) for O(log n) key storage. Support ~2²⁰ signatures per tree.</p>
+        </div>
+        <div class="roadmap-item">
+          <span class="roadmap-phase">Phase 2</span>
+          <h3>P2P Network</h3>
+          <p>WebSocket gossip protocol · Peer discovery · Block propagation · Transaction relay</p>
+        </div>
+        <div class="roadmap-item">
+          <span class="roadmap-phase">Phase 3</span>
+          <h3>Multi-Sig & Vaults</h3>
+          <p>M-of-N WOTS+ multisig · Timelocked vaults · Recovery mechanisms</p>
+        </div>
+        <div class="roadmap-item">
+          <span class="roadmap-phase">Phase 4</span>
+          <h3>SPV & Light Clients</h3>
+          <p>Merkle proofs for lightweight verification · Mobile wallet support</p>
+        </div>
+        <div class="roadmap-item">
+          <span class="roadmap-phase">Phase 5</span>
+          <h3>Bitcoin Migration</h3>
+          <p>Hybrid signature mode (WOTS+ + ECDSA) · Peg-in/peg-out bridge · Gradual migration path</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container footer-inner">
+      <div class="footer-brand">
+        <span class="footer-logo">⚛ BitcoinQS</span>
+        <p>Quantum-secure cryptocurrency using WOTS+ post-quantum signatures.</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://github.com/foxreymann/bitcoinqs" target="_blank">GitHub</a>
+        <a href="#threat">Quantum Threat</a>
+        <a href="#how">How It Works</a>
+        <a href="#demo">Demo</a>
+      </div>
+      <div class="footer-copy">
+        &copy; 2025 BitcoinQS · MIT License · Built for the quantum age
+      </div>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
