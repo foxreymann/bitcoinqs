@@ -8,6 +8,7 @@
   "bin": { "bitcoinqs-demo": "./demo.js" },
   "scripts": {
     "demo": "node demo.js",
+    "demo:video": "node demo-video.js",
     "demo:api": "node src/node.js",
     "test": "node --test test/*.test.js"
   },

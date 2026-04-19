@@ -118,6 +118,18 @@ BitcoinQS demonstrates that a quantum-secure cryptocurrency is not only possible
 | UTXO model | Yes | Yes |
 | Quantum migration | Unplanned | Native |
 
+## Demo Video
+
+![BitcoinQS Demo](demo-output/bitcoinqs-demo.svg)
+
+Generate the demo video yourself:
+
+```bash
+npm run demo:video
+```
+
+This produces an animated SVG terminal recording in `demo-output/bitcoinqs-demo.svg` and an asciinema cast file in `demo-output/bitcoinqs-demo.cast`.
+
 ## Run It
 
 ```bash
